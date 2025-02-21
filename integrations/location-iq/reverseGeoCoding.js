@@ -1,6 +1,6 @@
 const config = require('../../config');
 const fetch = require('../../utils/fetch');
-const apiStats = require('../../utils/apiCallsStats');
+const apiStats = require('../stats');
 
 exports.reverseGeocode = async (req, res) => {
     const url = config.LOCATIONIQ + `&lat=${req.query.lat}&lon=${req.query.lon}`;

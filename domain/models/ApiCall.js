@@ -5,9 +5,9 @@ const sequelize = new Sequelize(config.POSTGRES_CONNECTION_STRING, {
     dialect: 'postgres'
 });
 
-class ApiCallStat extends Model { }
+class ApiCall extends Model { }
 
-ApiCallStat.init({
+ApiCall.init({
     id: { type: DataTypes.UUID, primaryKey: true, allowNull: false },
     service_name: { type: DataTypes.STRING, allowNull: false },
     client_ip: { type: DataTypes.STRING },
@@ -19,4 +19,4 @@ ApiCallStat.init({
     timestamps: false
 });
 
-module.exports = ApiCallStat;
+module.exports = ApiCall;

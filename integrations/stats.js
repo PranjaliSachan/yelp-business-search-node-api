@@ -1,5 +1,5 @@
 const { v4: UUID } = require('uuid');
-const ApiCallStat = require('../domain/models/ApiCallStat');
+const ApiCall = require('../domain/models/ApiCall');
 
 exports.SERVICE_TYPE = {
     INTEGRATIONS: {
@@ -12,8 +12,13 @@ exports.SERVICE_TYPE = {
 
 exports.getStats = async (req, res) => {
     try {
-        const products = await Product.findAll();
-        res.status(200).json(products);
+        const { serviceName } = req.params;
+        const stats = await ApiCall.findAll({
+            where: {
+                service_name: this.SERVICE_TYPE.INTEGRATIONS[serviceName],
+            },
+        });
+        res.status(200).json(stats);
     } catch (error) {
         console.error('An error occurred while getting api call stats', error);
         res.status(500).json(error);
@@ -26,7 +31,7 @@ exports.updateStats = async (_ = { service_name, client_ip }) => {
         _['timestamp'] = new Date().toUTCString();
         console.log(_);
         // const newStat = new ApiCallStat(_);
-        await ApiCallStat.create(_);
+        await ApiCall.create(_);
         return true;
     } catch (error) {
         console.error('An error occurred while inserting api call stat', error);

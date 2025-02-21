@@ -3,6 +3,7 @@ const router = express.Router();
 const yelp = require('../integrations/yelp/fusion');
 const locationiq = require('../integrations/location-iq/reverseGeoCoding');
 const mapbox = require('../integrations/mapbox/mapbox');
+const stats = require('../integrations/stats');
 
 router.route('/yelp/businesses')
     .get(yelp.searchBusinesses);
@@ -21,5 +22,8 @@ router.route('/locationiq/reverse')
 
 router.route('/mapbox/key')
     .get(mapbox.getMapBoxToken);
+
+router.route('/stats')
+    .get(stats.getStats);
 
 module.exports = router;
