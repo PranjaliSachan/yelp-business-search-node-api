@@ -1,5 +1,5 @@
 const config = require('../../config');
-const apiCallStats = require('../../utils/apiCallsStats');
+const apiCallStats = require('../stats');
 
 exports.getMapBoxToken = async (req, res) => {
     apiCallStats
