@@ -18,8 +18,8 @@ exports.categories = async (req, res) => {
         .then(data => res.status(200).json(data))
         .catch(_ => res.sendStatus(500))
         .finally(_ => apiStats.updateStats({
-            service_name: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
-            client_ip: req.ip
+            serviceName: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
+            clientIp: req.ip
         }));
 }
 
@@ -40,8 +40,8 @@ exports.searchBusinesses = async (req, res) => {
         .then(data => res.status(200).json(data))
         .catch(_ => res.sendStatus(500))
         .finally(_ => apiStats.updateStats({
-            service_name: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
-            client_ip: req.ip
+            serviceName: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
+            clientIp: req.ip
         }));
 }
 
@@ -56,8 +56,8 @@ exports.businessDetails = async (req, res) => {
         .then(data => res.status(200).json(data))
         .catch(_ => res.sendStatus(500))
         .finally(_ => apiStats.updateStats({
-            service_name: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
-            client_ip: req.ip
+            serviceName: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
+            clientIp: req.ip
         }));
 }
 
@@ -77,7 +77,7 @@ exports.businessReviews = async (req, res) => {
         .then(data => res.status(200).json(data))
         .catch(_ => res.sendStatus(500))
         .finally(_ => apiStats.updateStats({
-            service_name: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
-            client_ip: req.ip
+            serviceName: apiStats.SERVICE_TYPE.INTEGRATIONS.YELP,
+            clientIp: req.ip
         }));
 }
