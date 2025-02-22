@@ -1,22 +1,17 @@
-const config = require('../../config');
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { v4: UUID } = require('uuid');
 
-const sequelize = new Sequelize(config.POSTGRES_CONNECTION_STRING, {
-    dialect: 'postgres'
-});
+class ApiCall {
+    id;
+    service_name;
+    client_ip;
+    timestamp;
 
-class ApiCall extends Model { }
-
-ApiCall.init({
-    id: { type: DataTypes.UUID, primaryKey: true, allowNull: false },
-    service_name: { type: DataTypes.STRING, allowNull: false },
-    client_ip: { type: DataTypes.STRING },
-    timestamp: { type: DataTypes.DATE, allowNull: false }
-}, {
-    sequelize,
-    tableName: 'apicall_stats',
-    modelName: 'ApiCallStat',
-    timestamps: false
-});
+    constructor(_ = { serviceName, clientIp: '' }) {
+        this.id = UUID();
+        this.service_name = _.serviceName;
+        this.client_ip = _.clientIp;
+        this.timestamp = new Date().toUTCString();
+    }
+}
 
 module.exports = ApiCall;

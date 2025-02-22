@@ -1,7 +1,6 @@
 const config = require('../../config');
 const fetch = require('../../utils/fetch');
 const apiStats = require('../stats');
-const { options } = require('../../domain/models/ApiCall');
 
 const yelpApiCallHeaders = {
     'Authorization': `Bearer ${config.YELP.KEY}`,

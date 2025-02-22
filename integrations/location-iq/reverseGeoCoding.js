@@ -8,13 +8,11 @@ exports.reverseGeocode = async (req, res) => {
         method: 'GET'
     }
 
-    console.log(url);
-
     fetch.apiCall(url, options)
         .then(data => res.status(200).json(data))
         .catch(_ => res.sendStatus(500))
         .finally(_ => apiStats.updateStats({
-            service_name: apiStats.SERVICE_TYPE.INTEGRATIONS.LOCATIONIQ,
-            client_ip: req.ip
+            serviceName: apiStats.SERVICE_TYPE.INTEGRATIONS.LOCATIONIQ,
+            clientIp: req.ip
         }));
 }
